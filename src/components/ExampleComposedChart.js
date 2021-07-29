@@ -1,6 +1,6 @@
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { ComposedChart, Line, Bar,Area, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
-const ExampleLineChart = ({
+const ExampleComposedChart = ({
     title,
     dataToShow
 }) => {
@@ -8,8 +8,8 @@ const ExampleLineChart = ({
     return (
         <div >
             <h2>{title}</h2>
-            <LineChart width={800} height={400} data={dataToShow}>
-                <CartesianGrid stroke="#ccc" />
+            <ComposedChart width={800} height={400} data={dataToShow}>
+                <CartesianGrid stroke="#f5f5f5" />
                 <XAxis dataKey="xAxisKey" />
                 <YAxis 
                 // mit dataKey kann die YAxis automatisch generiert werden (höchste Zahl oben)
@@ -20,11 +20,13 @@ const ExampleLineChart = ({
                 // domain={[100, 400]}
                 />
                 <Tooltip />
-                <Line type="monotone" dataKey="firstLine" stroke="#8884d8" />
-                <Line type="monotone" dataKey="secondLine" stroke="#82ca9d" />
-            </LineChart>
+                <Legend />
+                <Area type="monotone" dataKey="firstLine" fill="#8884d8" stroke="#8884d8" />
+                <Bar dataKey="secondLine" barSize={20} fill="#82ca9d" />
+                <Line type="monotone" dataKey="secondLine" stroke="#8884d8" />
+            </ComposedChart>
         </div>
     );
 }
 
-export default ExampleLineChart;
+export default ExampleComposedChart;
