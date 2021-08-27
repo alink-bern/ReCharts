@@ -5,6 +5,7 @@ import ExampleLineChart from "./components/ExampleLineChart"
 import ExampleBarChart from "./components/ExampleBarChart"
 import ExamplePieChart from "./components/ExamplePieChart"
 import ExampleComposedChart from "./components/ExampleComposedChart"
+import { CSVReader } from "react-papaparse"
 
 function App() {
   const [chartType, setChartType] = useState("none");
@@ -62,6 +63,14 @@ function App() {
     }
   }
 
+
+
+  // andere Möglichkeit, siehe Antwort von Evan: https://stackoverflow.com/questions/7431268/how-to-read-data-from-csv-file-using-javascript
+  function csvJSON() {
+
+
+  }
+
   return (
     <div className="App">
       <h1>ReCharts Introduction</h1>
@@ -71,11 +80,16 @@ function App() {
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Bar")}>Show BarChart</button>
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Composed")}>Show ComposedChart</button>
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Pie")}>Show PieChart</button>
-        <button type="button" className="btn btn-primary ms-2" onClick={() => changeData()}>Change Data</button>
       </div>
-      <ResponsiveContainer width="100%" height="100%">
-        {showChart()}
-      </ResponsiveContainer>
+      <div className="container">
+        <ResponsiveContainer width="100%" height="100%">
+          {showChart()}
+        </ResponsiveContainer>
+      </div>
+      <div className="container">
+        <button type="button" className="btn btn-primary ms-2" onClick={() => changeData()}>Change Data randomly</button>
+        <button type="button" className="btn btn-primary ms-2" onClick={() => csvJSON()}>Change Data from file</button>
+      </div>
     </div>
   );
 }
