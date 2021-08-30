@@ -27,16 +27,15 @@ const ExampleBarChart = ({
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="xAxisKey" />
                 <YAxis
-                    // mit dataKey kann die YAxis automatisch generiert werden (höchste Zahl oben)
-                    dataKey="firstLine"
-                    // dataKey kann mehrmals gesetzt werden, wenn von mehreren Datenwerten beide berücksichtigt werden sollen
-                    // dataKey="secondLine"
-                    // mit domain kann man die Werte selbst definieren ([min, max] -> Zwischenwerte werden automatisch erstellt)
-                    // domain={[100, 400]}
-                />                
-                <Tooltip 
-                //customized tooltip
-                content={<CustomTooltip />}/>
+                // mit dataKey kann die entsprechende Achse automatisch auf einem Wert basierend generiert werden (höchste Zahl oben)
+                // dataKey="firstLine" 
+                // dataKey="secondLine"
+                // mit domain kann man die Werte selbst definieren ([min, max] -> Zwischenwerte werden automatisch erstellt)
+                // domain={[100, 400]}
+                />
+                <Tooltip
+                    //customized tooltip
+                    content={<CustomTooltip />} />
                 <Legend />
                 <Bar dataKey="firstLine" fill="#8884d8" />
                 <Bar dataKey="secondLine" fill="#82ca9d" />

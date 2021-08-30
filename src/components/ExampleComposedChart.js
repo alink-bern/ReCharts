@@ -12,9 +12,8 @@ const ExampleComposedChart = ({
                 <CartesianGrid stroke="#f5f5f5" />
                 <XAxis dataKey="xAxisKey" />
                 <YAxis 
-                // mit dataKey kann die YAxis automatisch generiert werden (höchste Zahl oben)
-                dataKey="firstLine" 
-                // dataKey kann mehrmals gesetzt werden, wenn von mehreren Datenwerten beide berücksichtigt werden sollen
+                // mit dataKey kann die entsprechende Achse automatisch auf einem Wert basierend generiert werden (höchste Zahl oben)
+                // dataKey="firstLine" 
                 // dataKey="secondLine"
                 // mit domain kann man die Werte selbst definieren ([min, max] -> Zwischenwerte werden automatisch erstellt)
                 // domain={[100, 400]}

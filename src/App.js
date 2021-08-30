@@ -5,7 +5,6 @@ import ExampleLineChart from "./components/ExampleLineChart"
 import ExampleBarChart from "./components/ExampleBarChart"
 import ExamplePieChart from "./components/ExamplePieChart"
 import ExampleComposedChart from "./components/ExampleComposedChart"
-import { CSVReader } from "react-papaparse"
 
 function App() {
   const [chartType, setChartType] = useState("none");
@@ -63,12 +62,39 @@ function App() {
     }
   }
 
-
-
-  // andere Möglichkeit, siehe Antwort von Evan: https://stackoverflow.com/questions/7431268/how-to-read-data-from-csv-file-using-javascript
-  function csvJSON() {
-
-
+  function readCSVFile(e) {
+    e.preventDefault()
+    const reader = new FileReader()
+    reader.onload = async (e) => {
+      const text = (e.target.result)
+      // console.log(text)
+      convertText(text)
+    };
+    reader.readAsText(e.target.files[0])
+  }
+  
+  function convertText(allText) {
+    var allTextLines = allText.split(/\r\n|\n/);
+    var headers = allTextLines[0].split(';');
+    var lines = [];
+    
+    for (var i = 1; i < allTextLines.length; i++) {
+      var data = allTextLines[i].split(';');
+      if (data.length == headers.length) {
+        var singleEntry = {};
+        for (var j = 0; j < headers.length; j++) {
+          if (headers[j] == "firstLine" || headers[j] == "secondLine"){
+            singleEntry[headers[j]] = parseInt(data[j])
+          }
+          else{
+            singleEntry[headers[j]] = data[j]
+          }
+        }
+        lines.push(singleEntry);
+      }
+    }
+    // console.log(lines)
+    setData(lines)
   }
 
   return (
@@ -88,7 +114,7 @@ function App() {
       </div>
       <div className="container">
         <button type="button" className="btn btn-primary ms-2" onClick={() => changeData()}>Change Data randomly</button>
-        <button type="button" className="btn btn-primary ms-2" onClick={() => csvJSON()}>Change Data from file</button>
+        <input type="file" className="ms-2" onChange={(e) => readCSVFile(e)} />
       </div>
     </div>
   );
