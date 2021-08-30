@@ -101,6 +101,7 @@ function App() {
     <div className="App">
       <h1>ReCharts Introduction</h1>
       <p>Install: npm i recharts</p>
+      <a href="https://recharts.org">https://recharts.org</a>
       <div className="container">
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Line")}>Show LineChart</button>
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Bar")}>Show BarChart</button>
