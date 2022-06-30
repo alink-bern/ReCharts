@@ -16,7 +16,7 @@ const ExampleLineChart = ({
                 // dataKey="firstLine" 
                 // dataKey="secondLine"
                 // mit domain kann man die Werte selbst definieren ([min, max] -> Zwischenwerte werden automatisch erstellt)
-                // domain={[0, 400]}
+                domain={[0, 400]}
                 />
                 <Tooltip />
                 <Line type="monotone" dataKey="firstLine" stroke="#8884d8" />

@@ -80,10 +80,10 @@ function App() {
     
     for (var i = 1; i < allTextLines.length; i++) {
       var data = allTextLines[i].split(';');
-      if (data.length == headers.length) {
+      if (data.length === headers.length) {
         var singleEntry = {};
         for (var j = 0; j < headers.length; j++) {
-          if (headers[j] == "firstLine" || headers[j] == "secondLine"){
+          if (headers[j] === "firstLine" || headers[j] === "secondLine"){
             singleEntry[headers[j]] = parseInt(data[j])
           }
           else{
@@ -101,7 +101,7 @@ function App() {
     <div className="App">
       <h1>ReCharts Introduction</h1>
       <p>Install: npm i recharts</p>
-      <a href="https://recharts.org">https://recharts.org</a>
+      <a href="https://recharts.org" target="blank">https://recharts.org --&gt; Documentation</a>
       <div className="container">
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Line")}>Show LineChart</button>
         <button type="button" className="btn btn-primary ms-2" onClick={() => setChartType("Bar")}>Show BarChart</button>
